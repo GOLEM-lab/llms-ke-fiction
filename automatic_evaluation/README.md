@@ -1,4 +1,4 @@
-# KE‑Fiction — Mini README
+# Towards Automatic Evaluation
 
 ## Overview
 * 3‑stage automatic evaluator: **Rule → Fuzzy (RapidFuzz) → Semantic (SBERT)**
