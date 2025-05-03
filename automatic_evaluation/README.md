@@ -1,124 +1,49 @@
-**Repository: Automatic Entity Evaluation**
+# KE‑Fiction — Mini README
 
-Evaluate predicted entity labels against ground truth using rule-based, fuzzy, and semantic matching.
+## Overview
+* 3‑stage automatic evaluator: **Rule → Fuzzy (RapidFuzz) → Semantic (SBERT)**
+* Per‑entity threshold modes: **tuned / lower / balanced**
 
----
+## Validation
+* Story validation set → **κ 0.94, Acc 96 %** (auto ≈ human)
 
-### Examples
+## Observed Gap
+* On full corpus auto scores **≈ –10 F1 pts** below manual  
+  * Worst on *Mode of Demise* & summary inputs  
+  * Cause: thresholds too strict → missed borderline matches
 
-Assume for the entity **Victim** the tuning process yields:
+## Evaluation Tables
 
-- **Tuned threshold**: 0.75
-- **Lower bound (5th percentile)**: 0.60
+# Auto P/R/F1 by Category
 
-| Strategy | Final threshold | Rationale                                                                  |
-| -------- | --------------- | -------------------------------------------------------------------------- |
-| tuned    | 0.75            | Maximizes historical accuracy (precision+recall).                          |
-| lower    | 0.60            | Ensures at least 95% recall of true positives.                             |
-| balanced | 0.75            | Meets recall requirement while retaining precision (max of 0.75 and 0.60). |
+## Category: Stories
 
----
+| Model          | Victim F1   | Perpetrator F1   | Mode of Demise F1   | Victim P   | Perpetrator P   | Mode of Demise P   | Victim R   | Perpetrator R   | Mode of Demise R   |
+|:---------------|:------------|:-----------------|:--------------------|:-----------|:----------------|:-------------------|:-----------|:----------------|:-------------------|
+| deepseek-r170b | 42.6%       | **26.7%**        | 25.3%               | 73.1%      | 47.7%           | 41.9%              | 30.1%      | **18.6%**       | 18.1%              |
+| gemma3:27b     | 35.1%       | 19.1%            | 16.3%               | 65.9%      | 39.6%           | 26.7%              | 23.9%      | 12.6%           | 11.7%              |
+| llama3170b     | **46.3%**   | 25.5%            | **25.8%**           | 70.3%      | 44.1%           | 38.8%              | **34.5%**  | 18.0%           | **19.3%**          |
+| qwen330b-a3b   | 22.1%       | 17.8%            | 19.3%               | **78.4%**  | **51.4%**       | **55.6%**          | 12.8%      | 10.8%           | 11.7%              |
 
-## 🚀 Features
+## Category: Specialised Summary
 
-- **Multi-stage resolution**:
-  1. **Rule**: exact or missing match
-  2. **Fuzzy**: token-level similarity (RapidFuzz)
-  3. **Semantic**: embedding-based cosine similarity (SentenceTransformer)
-- **Threshold tuning** (or load saved): select per-entity fuzzy/semantic cutoffs
-- **Metrics & plots**: precision, recall, F1; similarity distributions; resolution breakdown
+| Model          | Victim F1   | Perpetrator F1   | Mode of Demise F1   | Victim P   | Perpetrator P   | Mode of Demise P   | Victim R   | Perpetrator R   | Mode of Demise R   |
+|:---------------|:------------|:-----------------|:--------------------|:-----------|:----------------|:-------------------|:-----------|:----------------|:-------------------|
+| deepseek-r170b | **47.0%**   | 29.0%            | **27.9%**           | 71.8%      | 44.4%           | 37.6%              | **35.0%**  | 21.6%           | **22.2%**          |
+| llama3170b     | 46.8%       | **32.8%**        | 23.8%               | **72.9%**  | **54.9%**       | **43.8%**          | 34.5%      | **23.4%**       | 16.4%              |
 
----
+## Category: Generic Summary
 
-## ⚙️ Requirements
+| Model          | Victim F1   | Perpetrator F1   | Mode of Demise F1   | Victim P   | Perpetrator P   | Mode of Demise P   | Victim R   | Perpetrator R   | Mode of Demise R   |
+|:---------------|:------------|:-----------------|:--------------------|:-----------|:----------------|:-------------------|:-----------|:----------------|:-------------------|
+| deepseek-r170b | 30.6%       | 18.4%            | **24.2%**           | 66.2%      | 40.0%           | **46.7%**          | 19.9%      | 12.0%           | **16.4%**          |
+| llama3170b     | **33.1%**   | **24.3%**        | 21.5%               | **70.0%**  | **55.3%**       | 46.2%              | **21.7%**  | **15.6%**       | 14.0%              |
 
-- Python 3.8+
-- pandas, numpy, rapidfuzz, sentence-transformers, matplotlib
 
-```bash
-pip install pandas numpy rapidfuzz sentence-transformers matplotlib
-```
 
----
-
-## 🔧 Configuration
-
-Edit at top of script:
-
-```python
-EVAL_METHOD              # human_evaluation name (e.g. "parachute")
-INPUT_CSV                # path to input CSV (gold + predictions)
-BASE_OUTPUT_DIR          # root for outputs
-FUZZY_SELECTION_STRATEGY # "tuned", "lower", or "balanced"
-SEMANTIC_SELECTION_STRATEGY
-LOAD_SAVED_THRESHOLDS    # True to skip recomputing
-THRESHOLDS_JSON          # path to saved thresholds (if loading)
-```
-
-Customize `ENTITY_CONFIG` to specify columns:
-
-```python
-ENTITY_CONFIG = [
-  { "col":"Victim",         "pred":"Victim_P",         "flags":[..] },
-  { "col":"Perpetrator",    "pred":"Perpetrator_P",    "flags":[..] },
-  { "col":"Mode of Demise", "pred":"Mode of Demise_P", "flags":[..] },
-]
-```
-
-### Selection Strategies
-
-- **tuned**: Use the threshold that maximizes accuracy on the tuning grid for each entity (optimizes overall precision and recall balance based on historical data).
-- **lower**: Set the threshold to the lower-bound (5th percentile) of similarity scores among true-positive examples. This ensures that at least 95% of correctly matched pairs meet or exceed the threshold, prioritizing recall even if precision may decrease.
-- **balanced**: For each entity, choose the higher value between the **tuned** and **lower** thresholds. This guarantees you meet the minimum recall requirement (`lower`) while still leveraging the accuracy-optimized threshold (`tuned`) to maintain precision.
-
----
-
-## 📈 Workflow
-
-1. **Load CSV** (expects `Gold` & `Pred` columns per entity).
-2. **Initialize flags** and empty “Resolution” column.
-3. **Compute similarity metrics**:
-   - Normalize text (lowercasing, punctuation removal).
-   - Fuzzy ratio and cosine similarity for each non‐missing pair.
-   - Save to `*_similarity_metrics.csv`.
-4. **Plot cosine distributions** (`*_cosine_distributions.png`).
-5. **Threshold selection**:
-   - **Load** saved JSON or **tune** over grids (`0.0–1.0`).
-   - Plot tuning curves (`*_fuzzy_tuning_plot.png`, `*_semantic_tuning_plot.png`).
-   - Derive final thresholds per‐entity and overall.
-   - Save thresholds JSON.
-6. **Full resolution**: apply multi‐stage matching using final thresholds; populate TP/FP/FN/TN flags.
-7. **Generate merged report** (`*_merged_report.csv`):
-   - Counts resolved by rule/fuzzy/semantic.
-   - Manual vs. auto precision/recall/F1.
-   - Thresholds and deltas.
-8. **Plot**:
-   - Resolution breakdown (`*_resolution_plot.png`, `*_overall_resolution.png`).
-   - PRF comparison with Δ labels (`*_prf_precision.png`, `_recall.png`, `_f1.png`).
-
----
-
-## 📂 Outputs
-
-All files are saved under:
-
-```
-$BASE_OUTPUT_DIR/<input_basename>/
-```
-
-- `parachute_<basename>.csv` – raw flags + resolutions
-- `*_merged_report.csv` – summary metrics
-- `*_similarity_metrics.csv` – raw sim scores
-- `*_tuning.csv` – tuning results
-- `*.png` – plots
-
----
-
-## ▶️ Usage
-
-```bash
-python3 evaluate_entities.py
-```
-
-Ensure paths and strategies are set in script header. Upon completion, review CSVs & plots in the output folder.
-
+## Next Steps
+* **RAG** — provide relevant story chunks during extraction  
+* **Traditional KE pipelines** — high setup cost; often needs training/fine‑tuning  
+* **Run same experiments on conventional datasets**
+  * ACE 2005 *(LDC2006T06, paywalled)*
+  * GunViolenceCorpus *(annotations largely off‑task)*
