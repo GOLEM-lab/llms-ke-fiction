@@ -1,0 +1,39 @@
+Loading CSV
+
+=== Strategy A: Binary-flag correlations ===
+TP: Pearson r = 0.895, Spearman ρ = 0.895, MCC = 0.895, Cohen’s κ = 0.895
+FP: Pearson r = 0.700, Spearman ρ = 0.700, MCC = 0.700, Cohen’s κ = 0.697
+FN: Pearson r = 0.913, Spearman ρ = 0.913, MCC = 0.913, Cohen’s κ = 0.913
+TN: Pearson r = 0.972, Spearman ρ = 0.972, MCC = 0.972, Cohen’s κ = 0.972
+
+=== Strategy B: Multi-class classification ===
+
+Confusion matrix (manual ↓ × auto →):
+     TP  FP   FN   TN
+TP  175  17    0    0
+FP    9  41    2    0
+FN    4   1  352    0
+TN    0   3    4  154
+
+Multi-class Cohen’s κ = 0.922
+
+Classification report (manual vs auto):
+              precision    recall  f1-score   support
+
+          TP      0.931     0.911     0.921       192
+          FP      0.661     0.788     0.719        52
+          FN      0.983     0.986     0.985       357
+          TN      1.000     0.957     0.978       161
+
+    accuracy                          0.948       762
+   macro avg      0.894     0.911     0.901       762
+weighted avg      0.952     0.948     0.949       762
+
+Saved 1 cases manual=FN auto=FP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/specialised_summary_llama/tuned/misclassifications/misclass_manual_FN_auto_FP.csv
+Saved 4 cases manual=FN auto=TP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/specialised_summary_llama/tuned/misclassifications/misclass_manual_FN_auto_TP.csv
+Saved 2 cases manual=FP auto=FN → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/specialised_summary_llama/tuned/misclassifications/misclass_manual_FP_auto_FN.csv
+Saved 9 cases manual=FP auto=TP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/specialised_summary_llama/tuned/misclassifications/misclass_manual_FP_auto_TP.csv
+Saved 4 cases manual=TN auto=FN → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/specialised_summary_llama/tuned/misclassifications/misclass_manual_TN_auto_FN.csv
+Saved 3 cases manual=TN auto=FP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/specialised_summary_llama/tuned/misclassifications/misclass_manual_TN_auto_FP.csv
+Saved 17 cases manual=TP auto=FP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/specialised_summary_llama/tuned/misclassifications/misclass_manual_TP_auto_FP.csv
+Done. All outputs in /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/specialised_summary_llama/tuned

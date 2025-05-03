@@ -1,0 +1,64 @@
+Entity;Threshold;Accuracy
+Victim;0.0;1.0
+Victim;0.05;1.0
+Victim;0.1;1.0
+Victim;0.15;1.0
+Victim;0.2;1.0
+Victim;0.25;1.0
+Victim;0.3;1.0
+Victim;0.35;1.0
+Victim;0.4;1.0
+Victim;0.45;1.0
+Victim;0.5;1.0
+Victim;0.55;1.0
+Victim;0.6;1.0
+Victim;0.65;1.0
+Victim;0.7;1.0
+Victim;0.75;1.0
+Victim;0.8;1.0
+Victim;0.85;1.0
+Victim;0.9;
+Victim;0.95;
+Victim;1.0;
+Perpetrator;0.0;0.5
+Perpetrator;0.05;0.5454545454545454
+Perpetrator;0.1;0.5454545454545454
+Perpetrator;0.15;0.6
+Perpetrator;0.2;0.6
+Perpetrator;0.25;0.625
+Perpetrator;0.3;0.6
+Perpetrator;0.35;1.0
+Perpetrator;0.4;1.0
+Perpetrator;0.45;1.0
+Perpetrator;0.5;1.0
+Perpetrator;0.55;1.0
+Perpetrator;0.6;1.0
+Perpetrator;0.65;1.0
+Perpetrator;0.7;1.0
+Perpetrator;0.75;1.0
+Perpetrator;0.8;1.0
+Perpetrator;0.85;1.0
+Perpetrator;0.9;1.0
+Perpetrator;0.95;
+Perpetrator;1.0;
+Mode of Demise;0.0;0.8
+Mode of Demise;0.05;0.8
+Mode of Demise;0.1;0.7948717948717948
+Mode of Demise;0.15;0.8055555555555556
+Mode of Demise;0.2;0.8333333333333334
+Mode of Demise;0.25;0.782608695652174
+Mode of Demise;0.3;0.8
+Mode of Demise;0.35;0.8421052631578947
+Mode of Demise;0.4;0.8666666666666667
+Mode of Demise;0.45;0.8461538461538461
+Mode of Demise;0.5;0.9
+Mode of Demise;0.55;0.8571428571428571
+Mode of Demise;0.6;1.0
+Mode of Demise;0.65;1.0
+Mode of Demise;0.7;1.0
+Mode of Demise;0.75;
+Mode of Demise;0.8;
+Mode of Demise;0.85;
+Mode of Demise;0.9;
+Mode of Demise;0.95;
+Mode of Demise;1.0;

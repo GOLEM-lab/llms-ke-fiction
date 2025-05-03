@@ -1,0 +1,5 @@
+work_id;Entity;manual_label;auto_label;Gold_Value;Predicted_Value
+17701.0;Victim;TP;FN;Patroclus;
+24160720.0;Victim;TP;FN;Cassandra;
+51106009.0;Victim;TP;FN;Theofylaktos;
+51106009.0;Mode of Demise;TP;FN;petrification;

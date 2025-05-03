@@ -46,7 +46,7 @@ def ollama_query_QA_prompt1(work_id, story):
         "\"Character Death\":\"yes\"; \"Mode of Demise\":\"tearing to pieces\"; \"Victim\":\"Orpheus\"; \"Perpetrator\":\"Maenads\".\n"
         "There may be multiple death events in the summary. Please provide separate answers for each event.\n"
         "You MUST STRICTLY RELY on the PROVIDED SUMMARY ONLY. You MUST NOT provide answers based on any information outside the text."
-        "Each group of answers for each death event should be output in JSONL format, as in the following example:\n"
+        "Each group of answers for each death event should be tuning_output in JSONL format, as in the following example:\n"
         + json_string + "\n"
         f"For this summary, use \"{work_id}\" as the work identifier.\n"
         "You MUST Return the generated JSONL only."

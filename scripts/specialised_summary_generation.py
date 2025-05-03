@@ -10,7 +10,7 @@ from tqdm import tqdm
 MODEL_NAME = "ollama/deepseek-r1:70b"
 API_BASE = "http://localhost:11434"
 
-# Paths to input CSV, output CSV, error log, etc.
+# Paths to input CSV, tuning_output CSV, error log, etc.
 INPUT_CSV_PATH = ""
 OUTPUT_CSV_PATH = ""
 ERROR_LOG_PATH = ""
@@ -52,7 +52,7 @@ def ollama_query_prompt2(story: str) -> str:
         "who is/are the victim(s), who is/are the perpetrator(s). "
         "Rely STRICTLY on the provided text. It is FORBIDDEN to include any information "
         "that is not present in the text. "
-        "Your output is a coherent and cohesive summary that encapsulates "
+        "Your tuning_output is a coherent and cohesive summary that encapsulates "
         "the essence of the given short story in a few sentences. "
         "Make sure to capture all the events of the story. "
         "Return the generated summary only. "
@@ -93,7 +93,7 @@ def main():
         fanfics_deathprj[SUMMARY_COLUMN_NAME] = None
 
     # --------------------------------------------------------------------
-    # 2) If an output CSV already exists, read it to skip processed rows
+    # 2) If an tuning_output CSV already exists, read it to skip processed rows
     #    (so if there's a crash or interruption, we pick up where we left)
     # --------------------------------------------------------------------
     if os.path.exists(OUTPUT_CSV_PATH):

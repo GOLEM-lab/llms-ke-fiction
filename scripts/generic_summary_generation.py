@@ -9,7 +9,7 @@ from tqdm import tqdm
 MODEL_NAME = "ollama/deepseek-r1:70b"
 API_BASE = "http://localhost:11434"
 
-# Input, output, and error log paths
+# Input, tuning_output, and error log paths
 INPUT_CSV_PATH = ""
 OUTPUT_CSV_PATH = ""
 ERROR_LOG_PATH = ""
@@ -48,7 +48,7 @@ def ollama_query_prompt1(story: str) -> str:
         f"\"{story}.\" "
         "Rely STRICTLY on the provided text. It is FORBIDDEN to include any information "
         "that is not present in the text. "
-        "Your output is a coherent and cohesive summary that encapsulates "
+        "Your tuning_output is a coherent and cohesive summary that encapsulates "
         "the essence of the given short story in a few sentences. "
         "Make sure to capture all the events of the story. "
         "Return the generated summary only. "
@@ -92,7 +92,7 @@ def main():
         fanfics_deathprj[SUMMARY_COLUMN_NAME] = None
 
     # -----------------------------------------------------------------
-    # 2) Merge partial results if output CSV already exists
+    # 2) Merge partial results if tuning_output CSV already exists
     # -----------------------------------------------------------------
     if os.path.exists(OUTPUT_CSV_PATH):
         partial_df = pd.read_csv(OUTPUT_CSV_PATH, low_memory=False)

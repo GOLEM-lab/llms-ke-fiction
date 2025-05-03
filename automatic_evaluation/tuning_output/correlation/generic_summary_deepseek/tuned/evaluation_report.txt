@@ -1,0 +1,37 @@
+Loading CSV
+
+=== Strategy A: Binary-flag correlations ===
+TP: Pearson r = 0.864, Spearman ρ = 0.864, MCC = 0.864, Cohen’s κ = 0.864
+FP: Pearson r = 0.702, Spearman ρ = 0.702, MCC = 0.702, Cohen’s κ = 0.702
+FN: Pearson r = 0.916, Spearman ρ = 0.916, MCC = 0.916, Cohen’s κ = 0.915
+TN: Pearson r = 0.962, Spearman ρ = 0.962, MCC = 0.962, Cohen’s κ = 0.962
+
+=== Strategy B: Multi-class classification ===
+
+Confusion matrix (manual ↓ × auto →):
+     TP  FP   FN   TN
+TP  104  12    0    0
+FP   15  42    0    0
+FN    0   4  440    6
+TN    0   1    0  141
+
+Multi-class Cohen’s κ = 0.917
+
+Classification report (manual vs auto):
+              precision    recall  f1-score   support
+
+          TP      0.874     0.897     0.885       116
+          FP      0.712     0.737     0.724        57
+          FN      1.000     0.978     0.989       450
+          TN      0.959     0.993     0.976       142
+
+    accuracy                          0.950       765
+   macro avg      0.886     0.901     0.893       765
+weighted avg      0.952     0.950     0.951       765
+
+Saved 4 cases manual=FN auto=FP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/generic_summary_deepseek/tuned/misclassifications/misclass_manual_FN_auto_FP.csv
+Saved 6 cases manual=FN auto=TN → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/generic_summary_deepseek/tuned/misclassifications/misclass_manual_FN_auto_TN.csv
+Saved 15 cases manual=FP auto=TP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/generic_summary_deepseek/tuned/misclassifications/misclass_manual_FP_auto_TP.csv
+Saved 1 cases manual=TN auto=FP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/generic_summary_deepseek/tuned/misclassifications/misclass_manual_TN_auto_FP.csv
+Saved 12 cases manual=TP auto=FP → /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/generic_summary_deepseek/tuned/misclassifications/misclass_manual_TP_auto_FP.csv
+Done. All outputs in /home/arianna/PycharmProjects/llms-ke-fiction/automatic_evaluation/output/correlation/generic_summary_deepseek/tuned

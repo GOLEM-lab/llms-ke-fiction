@@ -1,0 +1,11 @@
+work_id;Entity;manual_label;auto_label;Gold_Value;Predicted_Value
+78338.0;Mode of Demise;FP;TP;software malfunction;program completion
+1087311.0;Mode of Demise;FP;TP;slashing;beheading
+24160720.0;Victim;FP;TP;Cassandra's son;Cassandra
+24847147.0;Mode of Demise;FP;TP;killed by animal;stabbing
+37903318.0;Perpetrator;FP;TP;Orpheus;Hermes
+47136421.0;Victim;FP;TP;Cassandra's father;Cassandra
+47136421.0;Mode of Demise;FP;TP;sacrifice;sword
+50519623.0;Mode of Demise;FP;TP;slaying;Battle
+56631334.0;Mode of Demise;FP;TP;struck by lightening;divine retribution
+57121198.0;Perpetrator;FP;TP;thunder's son;Perseus

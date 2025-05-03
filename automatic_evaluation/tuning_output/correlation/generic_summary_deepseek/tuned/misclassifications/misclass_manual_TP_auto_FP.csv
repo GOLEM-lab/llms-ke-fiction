@@ -1,0 +1,13 @@
+work_id;Entity;manual_label;auto_label;Gold_Value;Predicted_Value
+17464;Mode of Demise;TP;FP;unspecified;killed
+30281253;Mode of Demise;TP;FP;slaying;pickaxe
+32232568;Perpetrator;TP;FP;---;Cassandra
+40214382;Perpetrator;TP;FP;Paris;his own father
+40214382;Mode of Demise;TP;FP;unspecified;killed
+40607286;Perpetrator;TP;FP;---;Ajax
+45282052;Perpetrator;TP;FP;Medea;witch
+47136421;Perpetrator;TP;FP;Agamemnon's wife;Clytemnestra
+47791900;Mode of Demise;TP;FP;slaying;fatal injury from sword
+49859260;Perpetrator;TP;FP;Clytemnestra;Atropos
+51106009;Mode of Demise;TP;FP;petrification;turned to stone
+56347633;Mode of Demise;TP;FP;unspecified;killing

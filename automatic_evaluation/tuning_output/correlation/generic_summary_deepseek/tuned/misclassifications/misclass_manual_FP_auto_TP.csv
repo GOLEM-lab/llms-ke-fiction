@@ -1,0 +1,16 @@
+work_id;Entity;manual_label;auto_label;Gold_Value;Predicted_Value
+1087311;Mode of Demise;FP;TP;slashing;beheading
+17006691;Mode of Demise;FP;TP;beheading;sacrifice
+24160720;Victim;FP;TP;Cassandra's son;sons
+25972498;Mode of Demise;FP;TP;war;vengeance and grief
+31797934;Mode of Demise;FP;TP;tearing to pieces/being eaten;bones scattered by wolves
+38886291;Mode of Demise;FP;TP;stabbing;not specified
+39728892;Mode of Demise;FP;TP;stabbing;severe injuries and bleeding
+44140441;Mode of Demise;FP;TP;discus;fatal injury
+45282052;Mode of Demise;FP;TP;manipulation/intercourse;during ordeal
+47136421;Mode of Demise;FP;TP;slaying;killed
+48848398;Mode of Demise;FP;TP;suicide;jumping
+49859260;Mode of Demise;FP;TP;slashing throat;sacrifice
+57137989;Mode of Demise;FP;TP;manipulation, intercourse, struck by lightning ;divine fire
+57183703;Perpetrator;FP;TP;Hades;Shadows
+57183703;Mode of Demise;FP;TP;self-sacrifice;Trapped in Underworld
