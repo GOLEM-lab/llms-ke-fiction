@@ -4,9 +4,6 @@
 * 3‑stage automatic evaluator: **Rule → Fuzzy (RapidFuzz) → Semantic (SBERT)**
 * Per‑entity threshold modes: **tuned / lower / balanced**
 
-## Validation
-* Story validation set → **κ 0.94, Acc 96 %** (auto ≈ human)
-
 ## Observed Gap
 * On full corpus auto scores **≈ –10 F1 pts** below manual  
   * Worst on *Mode of Demise* & summary inputs  
