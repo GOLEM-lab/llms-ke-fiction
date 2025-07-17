@@ -1,8 +1,0 @@
-work_id;Entity;manual_label;auto_label;Gold_Value;Predicted_Value
-734141;Perpetrator;TP;FP;Cassandra;the narrator
-1087311;Mode of Demise;TP;FP;petrification;turning to stone
-30281253;Mode of Demise;TP;FP;slaying;pickaxe
-39722094;Mode of Demise;TP;FP;old age;natural causes
-45282052;Mode of Demise;TP;FP;manipulation/intercourse;heart stopped beating
-47136421;Perpetrator;TP;FP;Agamemnon's wife;Clytemnestra
-52941766;Victim;TP;FP;;first batch of humans

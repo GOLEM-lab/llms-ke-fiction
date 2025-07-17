@@ -1,5 +1,0 @@
-work_id;Entity;manual_label;auto_label;Gold_Value;Predicted_Value
-56347633;Mode of Demise;FN;FP;physical weakness due to extensive childbearing;killing
-56631334;Victim;FN;FP;;none
-56631334;Perpetrator;FN;FP;;none
-56631334;Mode of Demise;FN;FP;;none
